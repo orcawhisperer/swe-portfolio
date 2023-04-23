@@ -3,7 +3,9 @@ import React from "react"
 
 export const About = ({ about }) => {
    return (
-      <section id="about" className="py-16 bg-black">
+      <section
+         id="about"
+         className="py-16 bg-gradient-to-r from-gray-800 via-gray-900 to-black">
          <div className="container mx-auto">
             <h2 className="text-4xl font-bold mb-8 text-center text-white shadow-text font-montserrat">
                ABOUT
