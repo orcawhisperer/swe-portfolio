@@ -1,10 +1,9 @@
-import React, { useState, useCallback } from "react"
+import { React } from "react"
 
 import Layout from "../components/Layout"
 import { FaJava, FaServer } from "react-icons/fa"
 
 import {
-   SiGmail,
    SiCplusplus,
    SiGo,
    SiPython,
@@ -28,7 +27,6 @@ import {
 import WorkExperience from "@/components/WorkExperience"
 import { About } from "@/components/About"
 import { Skills } from "@/components/Skills"
-import { Contact } from "@/components/Contact"
 import { Hero } from "@/components/Hero"
 import { Certification } from "@/components/Certification"
 
@@ -265,7 +263,7 @@ export default function Home() {
       },
    ]
    return (
-      <Layout pageTitle="My Portfolio">
+      <Layout pageTitle="Vasanth - Portfolio">
          <Hero />
          <About />
          <WorkExperience workExperience={workExperience} />
