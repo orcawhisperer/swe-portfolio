@@ -30,11 +30,11 @@ export const Certification = () => {
             CERTIFICATIONS
          </h2>
          <div className="container mx-auto">
-            <div className="flex justify-center flex-wrap">
+            <div className="flex justify-start flex-nowrap overflow-x-auto px-4">
                {certifications.map((certification, index) => (
                   <div
                      key={index}
-                     className="mb-8 p-4 md:p-6 bg-white rounded-lg shadow-md max-w-sm mx-4 w-full">
+                     className="mb-8 p-4 md:p-6 bg-white rounded-lg shadow-md hover:bg-gray-100 hover:border-gray-200 border-2 transition-all duration-300 max-w-sm mx-2 w-full min-w-[calc(100%/3)] flex flex-col items-center">
                      <h4 className="text-xl md:text-2xl font-bold mb-4 text-gray-700">
                         {certification.title}
                      </h4>

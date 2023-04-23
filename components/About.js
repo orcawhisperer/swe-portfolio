@@ -12,7 +12,7 @@ export const About = ({ about }) => {
             </h2>
             <div className="grid md:grid-cols-2 gap-8 items-center">
                <div>
-                  <p className="text-white text-lg leading-relaxed font-mono-roboto">
+                  <p className="text-white text-lg leading-relaxed font-poppins">
                      Experienced software engineer skilled in Programming and
                      Technologies like Python, Go, JavaScript, Web Application
                      Development, DevOps, and Linux. Bachelors in Computer
@@ -20,13 +20,28 @@ export const About = ({ about }) => {
                      technologies and solving real-world problems through
                      technology.
                   </p>
-                  {/* <ul className="mt-4 text-white">
+                  <ul className="mt-4 text-white flex flex-wrap gap-4">
                      <li>
-                        Skills: Python, Go, JavaScript, Web Development, DevOps,
-                        Linux
+                        <span className="inline-block bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-xs font-semibold py-1 px-2 rounded-full uppercase tracking-wide">
+                           Cricket
+                        </span>
                      </li>
-                     <li>Hobbies: Traveling, Hiking, Reading, Cooking</li>
-                  </ul> */}
+                     <li>
+                        <span className="inline-block bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-xs font-semibold py-1 px-2 rounded-full uppercase tracking-wide">
+                           Gym
+                        </span>
+                     </li>
+                     <li>
+                        <span className="inline-block bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-xs font-semibold py-1 px-2 rounded-full uppercase tracking-wide">
+                           Tinkering
+                        </span>
+                     </li>
+                     <li>
+                        <span className="inline-block bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-xs font-semibold py-1 px-2 rounded-full uppercase tracking-wide">
+                           Travelling
+                        </span>
+                     </li>
+                  </ul>
                </div>
                <div className="max-w-md mx-auto image-container">
                   {/* Add an image of yourself here */}

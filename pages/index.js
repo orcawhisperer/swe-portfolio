@@ -35,7 +35,7 @@ export default function Home() {
       {
          title: "Python",
          category: "Programming",
-         icon: <SiPython />,
+         icon: <SiPython color="#3776AB" />,
          proficiency: "Expert",
          proficiencyLevel: 90,
          color: "text-blue-600",
@@ -43,7 +43,7 @@ export default function Home() {
       {
          title: "Go",
          category: "Programming",
-         icon: <SiGo />,
+         icon: <SiGo color="#00ADD8" />,
          proficiency: "Intermediate",
          proficiencyLevel: 60,
          color: "text-green-500",
@@ -51,7 +51,7 @@ export default function Home() {
       {
          title: "C/C++",
          category: "Programming",
-         icon: <SiCplusplus />,
+         icon: <SiCplusplus color="#00599C" />,
          proficiency: "Intermediate",
          proficiencyLevel: 60,
          color: "text-yellow-500",
@@ -59,7 +59,7 @@ export default function Home() {
       {
          title: "JavaScript",
          category: "Programming",
-         icon: <SiJavascript />,
+         icon: <SiJavascript color="#F7DF1E" />,
          proficiency: "Expert",
          proficiencyLevel: 90,
          color: "text-red-500",
@@ -67,7 +67,7 @@ export default function Home() {
       {
          title: "Java",
          category: "Programming",
-         icon: <FaJava />,
+         icon: <FaJava color="#E32636" />,
          proficiency: "Intermediate",
          proficiencyLevel: 60,
          color: "text-purple-600",
@@ -83,7 +83,7 @@ export default function Home() {
       {
          title: "AWS",
          category: "DevOps & Cloud",
-         icon: <SiAmazonaws />,
+         icon: <SiAmazonaws color="#FF9900" />,
          proficiency: "Intermediate",
          proficiencyLevel: 75,
          color: "text-pink-500",
@@ -91,7 +91,7 @@ export default function Home() {
       {
          title: "GCP",
          category: "DevOps & Cloud",
-         icon: <SiGooglecloud />,
+         icon: <SiGooglecloud color="#1A73E8" />,
          proficiency: "Intermediate",
          proficiencyLevel: 85,
          color: "text-orange-500",
@@ -99,7 +99,7 @@ export default function Home() {
       {
          title: "Azure",
          category: "DevOps & Cloud",
-         icon: <SiMicrosoftazure />,
+         icon: <SiMicrosoftazure color="#0078D4" />,
          proficiency: "Intermediate",
          proficiencyLevel: 75,
          color: "text-teal-500",
@@ -107,7 +107,7 @@ export default function Home() {
       {
          title: "Docker",
          category: "DevOps & Cloud",
-         icon: <SiDocker />,
+         icon: <SiDocker color="#2496ED" />,
          proficiency: "Intermediate",
          proficiencyLevel: 85,
          color: "text-blue-400",
@@ -115,7 +115,7 @@ export default function Home() {
       {
          title: "Kubernetes",
          category: "DevOps & Cloud",
-         icon: <SiKubernetes />,
+         icon: <SiKubernetes color="#326CE5" />,
          proficiency: "Intermediate",
          proficiencyLevel: 75,
          color: "text-green-400",
@@ -123,7 +123,7 @@ export default function Home() {
       {
          title: "Terraform",
          category: "DevOps & Cloud",
-         icon: <SiTerraform />,
+         icon: <SiTerraform color="#5C4EE5" />,
          proficiency: "Intermediate",
          proficiencyLevel: 75,
          color: "text-yellow-400",
@@ -131,7 +131,7 @@ export default function Home() {
       {
          title: "CI/CD tools",
          category: "DevOps & Cloud",
-         icon: <SiJenkins />,
+         icon: <SiJenkins color="#D24939" />,
          proficiency: "Intermediate",
          proficiencyLevel: 75,
          color: "text-red-400",
@@ -139,7 +139,7 @@ export default function Home() {
       {
          title: "Bash scripting",
          category: "DevOps & Cloud",
-         icon: <SiShell />,
+         icon: <SiShell color="#4CAF50" />,
          proficiency: "Intermediate",
          proficiencyLevel: 75,
          color: "text-purple-400",
@@ -147,7 +147,7 @@ export default function Home() {
       {
          title: "Linux",
          category: "OS & Databases",
-         icon: <SiLinux />,
+         icon: <SiLinux color="#FFFFFF" />,
          proficiency: "Intermediate",
          proficiencyLevel: 75,
          color: "text-indigo-400",
@@ -155,7 +155,7 @@ export default function Home() {
       {
          title: "MacOS",
          category: "OS & Databases",
-         icon: <SiApple />,
+         icon: <SiApple color="#A1A1A1" />,
          proficiency: "Intermediate",
          proficiencyLevel: 75,
          color: "text-pink-400",
@@ -163,7 +163,7 @@ export default function Home() {
       {
          title: "Windows",
          category: "OS & Databases",
-         icon: <SiWindows />,
+         icon: <SiWindows color="#0078D7" />,
          proficiency: "Intermediate",
          proficiencyLevel: 75,
          color: "text-orange-400",
@@ -171,7 +171,7 @@ export default function Home() {
       {
          title: "Neo4j",
          category: "OS & Databases",
-         icon: <SiNeo4J />,
+         icon: <SiNeo4J color="#008CC1" />,
          proficiency: "Intermediate",
          proficiencyLevel: 75,
          color: "text-teal-400",
@@ -179,7 +179,7 @@ export default function Home() {
       {
          title: "MySQL",
          category: "OS & Databases",
-         icon: <SiMysql />,
+         icon: <SiMysql color="#0072C6" />,
          proficiency: "Intermediate",
          proficiencyLevel: 75,
          color: "text-blue-300",
@@ -187,7 +187,7 @@ export default function Home() {
       {
          title: "PostgreSQL",
          category: "OS & Databases",
-         icon: <SiPostgresql />,
+         icon: <SiPostgresql color="#336791" />,
          proficiency: "Intermediate",
          proficiencyLevel: 75,
          color: "text-green-300",

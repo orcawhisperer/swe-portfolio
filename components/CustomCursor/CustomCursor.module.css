@@ -1,0 +1,35 @@
+/* customCursor.css */
+.customCursor {
+    cursor: none;
+  }
+  
+  .customCursor::before {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+  }
+  
+  .customCursor.click-animation::before {
+    animation: clickEffect 0.3s linear;
+  }
+  
+  @keyframes clickEffect {
+    0% {
+      width: 20px;
+      height: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+    100% {
+      width: 40px;
+      height: 40px;
+      background-color: rgba(0, 0, 0, 0);
+    }
+  }
+  

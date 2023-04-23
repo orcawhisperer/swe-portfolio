@@ -25,9 +25,9 @@ export const Skills = ({ skills }) => {
                   <button
                      key={index}
                      onClick={() => setActiveCategory(category)}
-                     className={`text-white font-semibold py-2 px-4 rounded ${
+                     className={`text-white font-semibold py-2 px-4 rounded font-montserrat ${
                         activeCategory === category
-                           ? "bg-blue-600"
+                           ? "py-16 bg-gradient-to-br from-red-500 via-yellow-500 via-green-500 to-blue-500"
                            : "bg-gray-600"
                      }`}>
                      {category}
@@ -40,7 +40,7 @@ export const Skills = ({ skills }) => {
                      <div className={`text-4xl mb-4 ${skill.color}`}>
                         {skill.icon}
                      </div>
-                     <h4 className="text-xl font-semibold mb-2 text-gray-300">
+                     <h4 className="text-xl font-semibold mb-2 text-gray-300 font-montserrat">
                         {skill.title}
                      </h4>
                      <div className="w-full h-6 relative overflow-hidden rounded-xl bg-gray-700">
