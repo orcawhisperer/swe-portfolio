@@ -197,6 +197,8 @@ export default function Home() {
       {
          company: "Google",
          location: "Bangalore, IN",
+         logo: "/images/google.svg",
+         companyUrl: "https://www.google.com/",
          positions: [
             {
                title: "Cloud Engineer, Full Stack",
@@ -220,6 +222,8 @@ export default function Home() {
       {
          company: "Amazon",
          location: "Chennai, IN",
+         logo: "/images/amazon.svg",
+         companyUrl: "https://www.amazon.com/",
          positions: [
             {
                title: "Application Engineer II",
@@ -234,6 +238,8 @@ export default function Home() {
       {
          company: "CapeStart",
          location: "Nagercoil, IN",
+         logo: "/images/capestart.png",
+         companyUrl: "https://www.capestart.com/",
          positions: [
             {
                title: "DevOps Engineer",
@@ -246,21 +252,21 @@ export default function Home() {
             },
          ],
       },
-      {
-         company: "Jhaiho Pvt Ltd",
-         location: "Bangalore, IN",
-         positions: [
-            {
-               title: "Software Engineer",
-               duration: "April 2019 - October 2020",
-               responsibilities: [
-                  "Worked as a Full Stack Developer for a startup company.",
-                  "Built Backend Microservices using Golang, gRPC and Python.",
-                  "Built a web application using React, Redux, NodeJS, MongoDB, and Neo4J.",
-               ],
-            },
-         ],
-      },
+      // {
+      //    company: "Jhaiho Pvt Ltd",
+      //    location: "Bangalore, IN",
+      //    positions: [
+      //       {
+      //          title: "Software Engineer",
+      //          duration: "April 2019 - October 2020",
+      //          responsibilities: [
+      //             "Worked as a Full Stack Developer for a startup company.",
+      //             "Built Backend Microservices using Golang, gRPC and Python.",
+      //             "Built a web application using React, Redux, NodeJS, MongoDB, and Neo4J.",
+      //          ],
+      //       },
+      //    ],
+      // },
    ]
    return (
       <Layout pageTitle="Vasanth - Portfolio">

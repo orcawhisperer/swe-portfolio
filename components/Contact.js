@@ -16,7 +16,9 @@ export const Contact = () => {
          id="contact"
          className="py-16 bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500">
          <div className="container mx-auto">
-            <h2 className="text-4xl font-bold text-center mb-8">CONTACT</h2>
+            <h2 className="text-4xl font-bold mb-8 text-center text-white shadow-text font-montserrat">
+               CONTACT
+            </h2>
             <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                <Link href={`mailto:${socialLinks.email}`}>
                   <li className="flex items-center shadow-lg p-4 rounded-md bg-white">

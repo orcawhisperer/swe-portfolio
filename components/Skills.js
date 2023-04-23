@@ -12,7 +12,7 @@ export const Skills = ({ skills }) => {
    }, {})
    return (
       <section id="skills" className="py-16 bg-black">
-         <h2 className="text-2xl md:text-4xl font-bold mb-8 text-center text-white">
+         <h2 className="text-4xl font-bold mb-8 text-center text-white shadow-text font-montserrat">
             SKILLS
          </h2>
          <div className="container mx-auto">
