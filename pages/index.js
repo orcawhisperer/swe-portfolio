@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from "react"
+import { React } from "react"
 
 import Layout from "../components/Layout"
 import { FaJava, FaServer, FaTerminal } from "react-icons/fa"
@@ -45,7 +45,7 @@ export default function Home() {
          category: "Programming",
          icon: <SiGo color="#00ADD8" />,
          proficiency: "Intermediate",
-         proficiencyLevel: 60,
+         proficiencyLevel: 73,
          color: "text-green-500",
          url: "https://go.dev/",
       },
@@ -54,7 +54,7 @@ export default function Home() {
          category: "Programming",
          icon: <SiCplusplus color="#00599C" />,
          proficiency: "Intermediate",
-         proficiencyLevel: 60,
+         proficiencyLevel: 70,
          color: "text-yellow-500",
          url: "https://isocpp.org/",
       },
@@ -149,8 +149,8 @@ export default function Home() {
          url: "https://www.jenkins.io/",
       },
       {
-         title: "Bash scripting",
-         category: "DevOps & Cloud",
+         title: "ShellScript",
+         category: "Programming",
          icon: <FaTerminal color="#4CAF50" />,
          proficiency: "Intermediate",
          proficiencyLevel: 75,
@@ -273,26 +273,12 @@ export default function Home() {
       },
    ]
 
-   const [skill, setSkill] = useState([])
-   const [loading, setLoading] = useState(true)
-
-   useEffect(() => {
-      async function fetchData() {
-         const res = await fetch("/data/portfolio.json")
-         const data = await res.json()
-         setSkill(data)
-         setLoading(false)
-      }
-      fetchData()
-   }, [])
-
    return (
       <Layout pageTitle="Vasanth - Portfolio">
          <Hero />
          <About />
          <WorkExperience workExperience={workExperience} />
          <Skills skills={skills} />
-         {/* <GitStats username={"iamvasanth07"} /> */}
          <Certification />
       </Layout>
    )

@@ -40,7 +40,7 @@
   }
   
   .skill-bar.slide-in {
-    animation: slide-in 1s forwards;
+    animation: slide-in 1.5s forwards;
   }
   
   @keyframes slide-in {
