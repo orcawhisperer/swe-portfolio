@@ -1,5 +1,6 @@
 import Image from "next/image"
 import React from "react"
+import Terminal from "./Terminal"
 
 export const About = ({ about }) => {
    return (
@@ -12,14 +13,7 @@ export const About = ({ about }) => {
             </h2>
             <div className="grid md:grid-cols-2 gap-8 items-center">
                <div>
-                  <p className="text-white text-lg leading-relaxed font-poppins">
-                     Experienced software engineer skilled in Programming and
-                     Technologies like Python, Go, JavaScript, Web Application
-                     Development, DevOps, and Linux. Bachelors in Computer
-                     Science Engineering. Interested in working on Revolutionary
-                     technologies and solving real-world problems through
-                     technology.
-                  </p>
+                  <Terminal />
                   <ul className="mt-4 text-white flex flex-wrap gap-4">
                      <li>
                         <span className="inline-block bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-xs font-semibold py-1 px-2 rounded-full uppercase tracking-wide">
