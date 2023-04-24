@@ -22,7 +22,7 @@
     transition: width 0.3s ease;
   }
 
-  @keyframes wave-top {
+  @keyframes wave {
     0% {
       transform: translateX(0);
     }
@@ -34,6 +34,23 @@
     }
   }
   
+
+  .skill-bar:hover {
+    cursor: pointer;
+  }
+  
+  .skill-bar.slide-in {
+    animation: slide-in 1s forwards;
+  }
+  
+  @keyframes slide-in {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: var(--skill-width, 100%);
+    }
+  }
   
 
 
@@ -94,75 +111,7 @@
   
 
   /* Contact Section END */
-  
-
-/* Work Experience Section START */
-
-.work-experience-container {
-    background-color: #f9fafb;
-    padding: 6rem 0;
- }
- 
- .work-experience-title {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    color: #1f2937;
-    text-align: center;
- }
- 
- .work-experience-item {
-    background-color: #f3f4f6;
-    border-radius: 0.5rem;
-    padding: 1.5rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    margin-bottom: 1.5rem;
- }
- 
- .work-experience-company {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #1f2937;
-    margin-bottom: 1rem;
- }
- 
- .work-experience-position {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #4b5563;
-    margin-bottom: 0.5rem;
- }
- 
- .work-experience-duration {
-    font-size: 1rem;
-    font-weight: 400;
-    color: #6b7280;
-    margin-bottom: 1rem;
- }
- 
- .work-experience-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
- }
- 
- .work-experience-list li {
-    font-size: 1rem;
-    font-weight: 400;
-    color: #6b7280;
-    padding-left: 1rem;
-    text-indent: -1rem;
-    margin-bottom: 0.5rem;
- }
- 
- .work-experience-list li:before {
-    content: '•';
-    padding-right: 0.5rem;
- }
- 
- /* Work Experience Section END */
- 
- 
+   
  
  /* Work Experience Section START */
 
@@ -352,3 +301,4 @@
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
  }
  
+

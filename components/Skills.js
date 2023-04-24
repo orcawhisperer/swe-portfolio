@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 
 export const Skills = ({ skills }) => {
+   const [hoveredSkillIndex, setHoveredSkillIndex] = useState(null)
+
    const skillsByCategory = skills.reduce((acc, skill) => {
       if (!acc[skill.category]) {
          acc[skill.category] = []
@@ -37,25 +39,38 @@ export const Skills = ({ skills }) => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                {skillsByCategory[activeCategory].map((skill, index) => (
                   <div key={index} className="flex flex-col items-center">
-                     <div className={`text-4xl mb-4 ${skill.color}`}>
-                        {skill.icon}
+                     <div
+                        className={`text-4xl mb-4 ${skill.color} cursor-pointer transform hover:scale-150 transition-all duration-300 ease-in-out`}>
+                        <a href={skill.url} target="_blank">
+                           {skill.icon}
+                        </a>
                      </div>
                      <h4 className="text-xl font-semibold mb-2 text-gray-300 font-montserrat">
                         {skill.title}
                      </h4>
-                     <div className="w-full h-6 relative overflow-hidden rounded-xl bg-gray-700">
+                     <div
+                        className="w-full h-6 relative overflow-hidden rounded-xl bg-gray-700"
+                        onMouseEnter={() => setHoveredSkillIndex(index)}
+                        onMouseLeave={() => setHoveredSkillIndex(null)}>
                         <div
-                           className={`w-full h-full absolute left-0 top-0 bg-gradient-to-r from-blue-600 via-blue-500 to-purple-600`}
+                           className={`w-full h-full absolute left-0 top-0 bg-gradient-to-r from-blue-600 via-blue-500 to-purple-600 skill-bar ${
+                              hoveredSkillIndex === index ? "slide-in" : ""
+                           }`}
                            style={{
                               clipPath:
                                  "polygon(0% 0%, 95% 0%, 100% 100%, 0% 100%)",
                               transformOrigin: "left",
-                              animation: `wave-top 2s ${
-                                 index * 0.2 + Math.random() * 0.5
-                              }s infinite alternate`,
                               width: `${skill.proficiencyLevel}%`,
+                              "--skill-width": `${skill.proficiencyLevel}%`,
                            }}
                         />
+                        {hoveredSkillIndex === index && (
+                           <div className="absolute inset-0 flex items-center justify-center">
+                              <span className="text-white text-sm font-semibold">
+                                 {skill.proficiencyLevel}%
+                              </span>
+                           </div>
+                        )}
                      </div>
                   </div>
                ))}

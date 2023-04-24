@@ -5,7 +5,7 @@ const WorkExperienceItem = ({ position }) => {
 
    return (
       <div
-         className={`border-l-4 border-blue-500 p-4 mb-6 transition-all duration-300 transform hover:scale-105 ${
+         className={`border-l-4 border-blue-500 p-4 mb-6 transition-all duration-300 transform hover:scale-105 cursor-pointer ${
             collapsed ? "collapsed" : ""
          }`}
          onClick={() => setCollapsed(!collapsed)}>

@@ -44,7 +44,6 @@ export const About = ({ about }) => {
                   </ul>
                </div>
                <div className="max-w-md mx-auto image-container">
-                  {/* Add an image of yourself here */}
                   <Image
                      src="/images/profile.jpg"
                      alt="Vasantha Kumar"

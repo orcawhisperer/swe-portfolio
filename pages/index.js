@@ -1,7 +1,7 @@
-import { React } from "react"
+import { React, useEffect, useState } from "react"
 
 import Layout from "../components/Layout"
-import { FaJava, FaServer } from "react-icons/fa"
+import { FaJava, FaServer, FaTerminal } from "react-icons/fa"
 
 import {
    SiCplusplus,
@@ -18,7 +18,6 @@ import {
    SiMicrosoftazure,
    SiJavascript,
    SiJenkins,
-   SiShell,
    SiLinux,
    SiApple,
    SiWindows,
@@ -39,6 +38,7 @@ export default function Home() {
          proficiency: "Expert",
          proficiencyLevel: 90,
          color: "text-blue-600",
+         url: "https://www.python.org/",
       },
       {
          title: "Go",
@@ -47,6 +47,7 @@ export default function Home() {
          proficiency: "Intermediate",
          proficiencyLevel: 60,
          color: "text-green-500",
+         url: "https://go.dev/",
       },
       {
          title: "C/C++",
@@ -55,6 +56,7 @@ export default function Home() {
          proficiency: "Intermediate",
          proficiencyLevel: 60,
          color: "text-yellow-500",
+         url: "https://isocpp.org/",
       },
       {
          title: "JavaScript",
@@ -63,6 +65,7 @@ export default function Home() {
          proficiency: "Expert",
          proficiencyLevel: 90,
          color: "text-red-500",
+         url: "https://www.javascript.com/",
       },
       {
          title: "Java",
@@ -71,6 +74,7 @@ export default function Home() {
          proficiency: "Intermediate",
          proficiencyLevel: 60,
          color: "text-purple-600",
+         url: "https://www.java.com/en/",
       },
       {
          title: "gRPC",
@@ -79,6 +83,7 @@ export default function Home() {
          proficiency: "Intermediate",
          proficiencyLevel: 60,
          color: "text-indigo-500",
+         url: "https://grpc.io/",
       },
       {
          title: "AWS",
@@ -87,6 +92,7 @@ export default function Home() {
          proficiency: "Intermediate",
          proficiencyLevel: 75,
          color: "text-pink-500",
+         url: "https://aws.amazon.com/",
       },
       {
          title: "GCP",
@@ -95,6 +101,7 @@ export default function Home() {
          proficiency: "Intermediate",
          proficiencyLevel: 85,
          color: "text-orange-500",
+         url: "https://cloud.google.com/",
       },
       {
          title: "Azure",
@@ -103,6 +110,7 @@ export default function Home() {
          proficiency: "Intermediate",
          proficiencyLevel: 75,
          color: "text-teal-500",
+         url: "https://azure.microsoft.com/en-us/",
       },
       {
          title: "Docker",
@@ -111,6 +119,7 @@ export default function Home() {
          proficiency: "Intermediate",
          proficiencyLevel: 85,
          color: "text-blue-400",
+         url: "https://www.docker.com/",
       },
       {
          title: "Kubernetes",
@@ -119,6 +128,7 @@ export default function Home() {
          proficiency: "Intermediate",
          proficiencyLevel: 75,
          color: "text-green-400",
+         url: "https://kubernetes.io/",
       },
       {
          title: "Terraform",
@@ -127,22 +137,25 @@ export default function Home() {
          proficiency: "Intermediate",
          proficiencyLevel: 75,
          color: "text-yellow-400",
+         url: "https://www.terraform.io/",
       },
       {
-         title: "CI/CD tools",
+         title: "Jenkins",
          category: "DevOps & Cloud",
          icon: <SiJenkins color="#D24939" />,
          proficiency: "Intermediate",
          proficiencyLevel: 75,
          color: "text-red-400",
+         url: "https://www.jenkins.io/",
       },
       {
          title: "Bash scripting",
          category: "DevOps & Cloud",
-         icon: <SiShell color="#4CAF50" />,
+         icon: <FaTerminal color="#4CAF50" />,
          proficiency: "Intermediate",
          proficiencyLevel: 75,
          color: "text-purple-400",
+         url: "https://www.gnu.org/software/bash/",
       },
       {
          title: "Linux",
@@ -151,6 +164,7 @@ export default function Home() {
          proficiency: "Intermediate",
          proficiencyLevel: 75,
          color: "text-indigo-400",
+         url: "https://www.linux.org/",
       },
       {
          title: "MacOS",
@@ -159,6 +173,7 @@ export default function Home() {
          proficiency: "Intermediate",
          proficiencyLevel: 75,
          color: "text-pink-400",
+         url: "https://www.apple.com/macos/",
       },
       {
          title: "Windows",
@@ -167,6 +182,7 @@ export default function Home() {
          proficiency: "Intermediate",
          proficiencyLevel: 75,
          color: "text-orange-400",
+         url: "https://www.microsoft.com/en-us/windows",
       },
       {
          title: "Neo4j",
@@ -175,6 +191,7 @@ export default function Home() {
          proficiency: "Intermediate",
          proficiencyLevel: 75,
          color: "text-teal-400",
+         url: "https://neo4j.com/",
       },
       {
          title: "MySQL",
@@ -183,6 +200,7 @@ export default function Home() {
          proficiency: "Intermediate",
          proficiencyLevel: 75,
          color: "text-blue-300",
+         url: "https://www.mysql.com/",
       },
       {
          title: "PostgreSQL",
@@ -191,6 +209,7 @@ export default function Home() {
          proficiency: "Intermediate",
          proficiencyLevel: 75,
          color: "text-green-300",
+         url: "https://www.postgresql.org/",
       },
    ]
    const workExperience = [
@@ -252,28 +271,28 @@ export default function Home() {
             },
          ],
       },
-      // {
-      //    company: "Jhaiho Pvt Ltd",
-      //    location: "Bangalore, IN",
-      //    positions: [
-      //       {
-      //          title: "Software Engineer",
-      //          duration: "April 2019 - October 2020",
-      //          responsibilities: [
-      //             "Worked as a Full Stack Developer for a startup company.",
-      //             "Built Backend Microservices using Golang, gRPC and Python.",
-      //             "Built a web application using React, Redux, NodeJS, MongoDB, and Neo4J.",
-      //          ],
-      //       },
-      //    ],
-      // },
    ]
+
+   const [skill, setSkill] = useState([])
+   const [loading, setLoading] = useState(true)
+
+   useEffect(() => {
+      async function fetchData() {
+         const res = await fetch("/data/portfolio.json")
+         const data = await res.json()
+         setSkill(data)
+         setLoading(false)
+      }
+      fetchData()
+   }, [])
+
    return (
       <Layout pageTitle="Vasanth - Portfolio">
          <Hero />
          <About />
          <WorkExperience workExperience={workExperience} />
          <Skills skills={skills} />
+         {/* <GitStats username={"iamvasanth07"} /> */}
          <Certification />
       </Layout>
    )
