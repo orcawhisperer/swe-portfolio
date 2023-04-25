@@ -11,6 +11,22 @@ export const Contact = () => {
       twitter: "https://twitter.com/iamvasanth07",
       email: "kvasanth373@gmail.com",
    }
+
+   const renderIcon = (key) => {
+      switch (key) {
+         case "email":
+            return <SiGmail color="#DB4437" />
+         case "github":
+            return <SiGithub color="black" />
+         case "linkedin":
+            return <SiLinkedin color="#0077B5" />
+         case "twitter":
+            return <SiTwitter color="#1DA1F2" />
+         default:
+            return null
+      }
+   }
+
    return (
       <section
          id="contact"
@@ -19,62 +35,15 @@ export const Contact = () => {
             <h2 className="text-4xl font-bold mb-8 text-center text-white shadow-text font-montserrat">
                CONTACT
             </h2>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-               <Link href={`mailto:${socialLinks.email}`}>
-                  <li className="flex items-center shadow-lg p-4 rounded-md bg-white">
-                     <span className="contact-icon text-blue-500">
-                        <SiGmail color="#DB4437" />
-                     </span>
-                     <div className="ml-4">
-                        <span className="block text-gray-700 font-semibold mb-2">
-                           Email
-                        </span>
+            <ul className="flex justify-center items-center space-x-8">
+               {Object.entries(socialLinks).map(([key, value], index) => (
+                  <Link key={key} href={value} target="_blank">
+                     <div className="text-5xl p-3 rounded-full bg-white shadow-md hover:bg-gray-200 transition-transform duration-300 hover:scale-110">
+                        {renderIcon(key)}
                      </div>
-                  </li>
-               </Link>
-               <Link href={socialLinks.github} target="_blank">
-                  <li className="flex items-center shadow-lg p-4 rounded-md bg-white">
-                     <span className="contact-icon text-gray-600">
-                        <SiGithub color="black" />
-                     </span>
-                     <div className="ml-4">
-                        <span className="block text-gray-700 font-semibold mb-2">
-                           GitHub
-                        </span>
-                     </div>
-                  </li>
-               </Link>
-               <Link href={socialLinks.linkedin} target="_blank">
-                  <li className="flex items-center shadow-lg p-4 rounded-md bg-white ">
-                     <span className="contact-icon text-blue-600">
-                        <SiLinkedin color="#0077B5" />
-                     </span>
-                     <div className="ml-4 ">
-                        <span className="block text-gray-700 font-semibold mb-2">
-                           LinkedIn
-                        </span>
-                     </div>
-                  </li>
-               </Link>
-               <Link href={socialLinks.twitter} target="_blank">
-                  <li className="flex items-center shadow-lg p-4 rounded-md bg-white ">
-                     <span className="contact-icon text-blue-600">
-                        <SiTwitter color="#1DA1F2" />
-                     </span>
-                     <div className="ml-4 ">
-                        <span className="block text-gray-700 font-semibold mb-2">
-                           Twitter
-                        </span>
-                     </div>
-                  </li>
-               </Link>
+                  </Link>
+               ))}
             </ul>
-            <div className="mt-8 text-center text-gray-500">
-               {/* <p className="text-white font-poppins">
-                  &copy; {2023} Vasantha Kumar - Software Engineer. All rights
-                  reserved.
-               </p> */}
-            </div>
          </div>
       </section>
    )

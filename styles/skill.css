@@ -371,6 +371,46 @@
   color: #fceabb;
 }
 
+.hero-section-light {
+  background-image: linear-gradient(to right, #a8c9ff, #d4b0f0, #a67ee6, #f4a4d4);
+  font-family: "Roboto Mono", monospace;
+}
+
+.hero-title-light {
+  font-size: 4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #333;
+  animation: text-focus-in 2s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+}
+
+.hero-subtitle-light {
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #555;
+  animation: text-focus-in 2.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+}
+
+.hero-btn-light {
+  background-color: #6a11cb;
+  color: #fceabb;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  animation: fade-in 3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+.hero-btn-light:hover {
+  background-color: #fceabb;
+  color: #6a11cb;
+}
+
+
 @keyframes text-focus-in {
   0% {
     -webkit-filter: blur(12px);

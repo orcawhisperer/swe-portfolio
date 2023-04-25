@@ -3,22 +3,25 @@ import React from "react"
 export const Certification = () => {
    const certifications = [
       {
+         title: "Associate Cloud Engineer",
+         provider: "Google Cloud",
+         date: "May 2022",
+         link: "https://www.credential.net/505ee7d0-9a8d-44c7-bd48-5501c0474318",
+         badge: "https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/50496814",
+      },
+      {
          title: "Professional Cloud Architect",
          provider: "Google Cloud",
          date: "May 2022",
          link: "https://www.credential.net/9879827e-1874-41c7-9719-6d6859c1720e",
+         badge: "https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/51314118",
       },
       {
          title: "Professional Cloud Developer",
          provider: "Google Cloud",
          date: "May 2022",
          link: "https://www.credential.net/8aef081c-8a5d-4f09-bbf4-dd798eb2eea9",
-      },
-      {
-         title: "Associate Cloud Engineer",
-         provider: "Google Cloud",
-         date: "May 2022",
-         link: "https://www.credential.net/505ee7d0-9a8d-44c7-bd48-5501c0474318",
+         badge: "https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/50890882",
       },
    ]
 
@@ -30,24 +33,18 @@ export const Certification = () => {
             CERTIFICATIONS
          </h2>
          <div className="container mx-auto">
-            <div className="flex justify-start flex-nowrap overflow-x-auto px-4">
+            <div className="flex flex-nowrap overflow-x-auto px-4 gap-4 justify-content-center md:justify-center">
                {certifications.map((certification, index) => (
-                  <div
-                     key={index}
-                     className="mb-8 p-4 md:p-6 bg-white rounded-lg shadow-md hover:bg-gray-100 hover:border-gray-200 border-2 transition-all duration-300 max-w-sm mx-2 w-full min-w-[calc(100%/3)] flex flex-col items-center">
-                     <h4 className="text-xl md:text-2xl font-bold mb-4 text-gray-700">
-                        {certification.title}
-                     </h4>
-                     <p className="text-gray-600 mb-2">
-                        {certification.provider}
-                     </p>
-                     <p className="text-gray-500 mb-2">{certification.date}</p>
+                  <div key={index} className="flex flex-col items-center">
                      <a
                         href={certification.link}
-                        className="text-blue-500 underline"
                         target="_blank"
                         rel="noopener noreferrer">
-                        View Certificate
+                        <img
+                           src={certification.badge}
+                           alt={`${certification.title} badge`}
+                           className="w-42 h-42 mb-4 object-contain rounded transform transition-transform duration-300 hover:scale-105"
+                        />
                      </a>
                   </div>
                ))}
