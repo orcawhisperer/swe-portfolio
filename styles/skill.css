@@ -126,6 +126,26 @@
   border-radius: 50%;
 }
 
+/* Add this to your CSS file or a style tag in your component */
+@keyframes closing {
+  0% {
+    opacity: 1;
+    height: 100%;
+  }
+  99% {
+    opacity: 0;
+    height: 0;
+  }
+  100% {
+    display: none;
+  }
+}
+
+.terminal-closing {
+  animation: closing 1s linear forwards;
+}
+
+
 /* Terminal Input */
 
 

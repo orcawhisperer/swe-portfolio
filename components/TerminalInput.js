@@ -1,9 +1,22 @@
 import React from "react"
 
-const TerminalInput = ({ value, onChange, processCommand, isTyping }) => {
+const TerminalInput = ({
+   value,
+   onChange,
+   processCommand,
+   isTyping,
+   handleUpArrow,
+   handleDownArrow,
+}) => {
    const handleKeyDown = () => (e) => {
       if (e.key === "Enter") {
          processCommand(value)
+      }
+      if (e.key === "ArrowUp") {
+         handleUpArrow()
+      }
+      if (e.key === "ArrowDown") {
+         handleDownArrow()
       }
    }
    return (

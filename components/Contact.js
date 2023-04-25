@@ -69,6 +69,12 @@ export const Contact = () => {
                   </li>
                </Link>
             </ul>
+            <div className="mt-8 text-center text-gray-500">
+               {/* <p className="text-white font-poppins">
+                  &copy; {2023} Vasantha Kumar - Software Engineer. All rights
+                  reserved.
+               </p> */}
+            </div>
          </div>
       </section>
    )
