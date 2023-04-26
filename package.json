@@ -1,6 +1,10 @@
 {
-   "name": "my-portfolio",
+   "name": "swe-portfolio",
    "version": "0.1.0",
+   "author": {
+      "name": "Vasantha Kumar A",
+      "email": "kvasanth373@gmail.com"
+   },
    "private": true,
    "scripts": {
       "dev": "next dev",
