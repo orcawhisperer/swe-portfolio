@@ -5,10 +5,10 @@ const Navbar = () => {
    const [isOpen, setIsOpen] = useState(false)
 
    return (
-      <nav className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 shadow-md fixed w-full z-10 hero-section">
+      <nav className="bg-gradient-to-r from-gray-800 via-gray-900 to-black shadow-md fixed w-full z-10">
          <div className="container mx-auto px-6 py-3">
             <div className="flex items-center justify-between">
-               <div className="text-2xl font-bold text-white home-logo">
+               <div className="text-2xl font-bold text-white font-montserrat">
                   <Link href="/">HOME</Link>
                </div>
                <div className="hidden md:block">
@@ -16,35 +16,35 @@ const Navbar = () => {
                      <li>
                         <a
                            href="#about"
-                           className="text-white hover:text-blue-200">
+                           className="text-white hover:text-blue-20 uppercase font-montserrat">
                            About
                         </a>
                      </li>
                      <li>
                         <a
                            href="#work-experience"
-                           className="text-white hover:text-blue-200">
+                           className="text-white hover:text-blue-200 uppercase font-montserrat">
                            Experience
                         </a>
                      </li>
                      <li>
                         <a
                            href="#skills"
-                           className="text-white hover:text-blue-200">
+                           className="text-white hover:text-blue-200 uppercase font-montserrat">
                            Skills
                         </a>
                      </li>
                      <li>
                         <a
                            href="#certifications"
-                           className="text-white hover:text-blue-200">
+                           className="text-white hover:text-blue-200 uppercase font-montserrat">
                            Certifications
                         </a>
                      </li>
                      <li>
                         <a
                            href="#contact"
-                           className="text-white hover:text-blue-200">
+                           className="text-white hover:text-blue-200 uppercase font-montserrat">
                            Contact
                         </a>
                      </li>
@@ -53,7 +53,7 @@ const Navbar = () => {
                </div>
                <div className="md:hidden flex items-center">
                   <button
-                     className="text-white hover:text-blue-200 focus:outline-none focus:text-blue-200"
+                     className="text-white hover:text-blue-200 uppercase focus:outline-none focus:text-blue-200"
                      onClick={() => setIsOpen(!isOpen)}>
                      <svg className="h-6 w-6 fill-current" viewBox="0 0 24 24">
                         {isOpen ? (
