@@ -1,5 +1,5 @@
 .hero-section {
-  background-image: linear-gradient(to right, #667eea, #764ba2, #6a11cb, #b24592), url('/images/matrix.jpeg');
+  background-image: linear-gradient(to right, #667eea, #764ba2, #6a11cb, #b24592);
   background-size: cover;
   background-position: center;
   font-family: "Montserrat", sans-serif;

@@ -43,6 +43,8 @@ const Certification = () => {
                         <img
                            src={certification.badge}
                            alt={`${certification.title} badge`}
+                           width={200}
+                           height={200}
                            className="w-42 h-42 mb-4 object-contain rounded transform transition-transform duration-300 hover:scale-105"
                         />
                      </a>

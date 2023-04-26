@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import styles from "./Skills.module.css"
+import Link from "next/link"
 
 const Skills = ({ skills }) => {
    const [hoveredSkillIndex, setHoveredSkillIndex] = useState(null)
@@ -42,9 +43,9 @@ const Skills = ({ skills }) => {
                   <div key={index} className="flex flex-col items-center">
                      <div
                         className={`text-4xl mb-4 ${skill.color} cursor-pointer transform hover:scale-150 transition-all duration-300 ease-in-out`}>
-                        <a href={skill.url} target="_blank">
+                        <Link href={skill.url} target="_blank">
                            {skill.icon}
-                        </a>
+                        </Link>
                      </div>
                      <h4 className="text-xl font-semibold mb-2 text-gray-300 font-montserrat">
                         {skill.title}
