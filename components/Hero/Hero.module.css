@@ -3,57 +3,15 @@
   font-family: "Montserrat", sans-serif;
 }
 
-.hero-title {
-  font-size: 4rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  animation: text-focus-in 2s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
-}
-
-.hero-subtitle {
-  font-size: 1.5rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  color: #fceabb;
-  animation: text-focus-in 2.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
-}
-
 .hero-btn {
-  background-color: #fceabb;
-  color: #6a11cb;
+  background-color: #1D2735;
+  color: #fff;
   border: none;
-  border-radius: 0.5rem;
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.3s;
-  animation: fade-in 3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
 .hero-btn:hover {
-  background-color: #6a11cb;
+  background-color: #7234B3;
   color: #fceabb;
 }
 
-@keyframes text-focus-in {
-  0% {
-    -webkit-filter: blur(12px);
-    filter: blur(12px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-filter: blur(0);
-    filter: blur(0);
-    opacity: 1;
-  }
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
