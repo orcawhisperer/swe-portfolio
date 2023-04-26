@@ -6,6 +6,7 @@ import TerminalInput from "./TerminalInput"
 const Terminal = () => {
    const [inputValue, setInputValue] = useState("")
    const [isTyping, setIsTyping] = useState(false)
+   const [showTerminalInput, setShowTerminalInput] = useState(false)
    const [outputMessages, setOutputMessages] = useState([])
    const [commandHistoryIndex, setCommandHistoryIndex] = useState(-1)
    const [isClosing, setIsClosing] = useState(false)
@@ -205,10 +206,11 @@ const Terminal = () => {
                      text="Hii, I'm an experienced software engineer skilled in various programming langauges and technologies like Python, Go, gRPC JavaScript, Web Application Development, DevOps, Cloud and Linux. I have Bachelors Degree in Computer Science Engineering. Interested in working on Revolutionary technologies and solving real-world problems through technology..."
                      typingSpeed={40}
                      setIsTyping={setIsTyping}
+                     setShowTerminalInput={setShowTerminalInput}
                      isTyping={isTyping}
                   />
                   {renderTerminalOutput()}
-                  {!isTyping && (
+                  {!isTyping && showTerminalInput && (
                      <TerminalInput
                         value={inputValue}
                         isTyping={isTyping}

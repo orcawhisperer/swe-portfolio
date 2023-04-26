@@ -1,7 +1,13 @@
 // TypingEffect.js
 import React, { useEffect, useState } from "react"
 
-const TypingEffect = ({ text, typingSpeed, setIsTyping, isTyping }) => {
+const TypingEffect = ({
+   text,
+   typingSpeed,
+   setIsTyping,
+   isTyping,
+   setShowTerminalInput,
+}) => {
    const [typedText, setTypedText] = useState("")
 
    useEffect(() => {
@@ -15,6 +21,7 @@ const TypingEffect = ({ text, typingSpeed, setIsTyping, isTyping }) => {
             }
          } else {
             setIsTyping(false)
+            setShowTerminalInput(true)
             clearInterval(interval)
          }
       }, typingSpeed)
