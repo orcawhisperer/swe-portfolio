@@ -9,6 +9,6 @@ steps:
            "app",
            "deploy",
            "--project=$PROJECT_ID",
-           "--version=$TAG_NAME",
+           "--version=$SHORT_SHA",
            "--quiet",
         ]
