@@ -2,7 +2,7 @@ import Image from "next/image"
 import React from "react"
 import Terminal from "@/components/Terminal/Terminal"
 
-const About = ({ about }) => {
+const About = ({ aboutMeText }) => {
    return (
       <section
          id="about"
@@ -13,7 +13,7 @@ const About = ({ about }) => {
             </h2>
             <div className="grid md:grid-cols-2 gap-8 items-center">
                <div>
-                  <Terminal />
+                  <Terminal aboutMeText={aboutMeText} />
                   <ul className="mt-4 text-white flex flex-wrap gap-4">
                      <li>
                         <span className="inline-block bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-xs font-semibold py-1 px-2 rounded-full uppercase tracking-wide">
@@ -41,7 +41,7 @@ const About = ({ about }) => {
                   <Image
                      src="/images/profile.jpg"
                      alt="Vasantha Kumar"
-                     className="w-full h-auto shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
+                     className="w-3/4 h-auto shadow-lg transition rounded-full duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105 cursor-pointer"
                      width={500}
                      height={500}
                   />

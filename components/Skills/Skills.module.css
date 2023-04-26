@@ -1,0 +1,18 @@
+/* styles.css */
+  
+  .skill-bar:hover {
+    cursor: pointer;
+  }
+  
+  .skill-bar.slide-in {
+    animation: slide-in 1.5s forwards;
+  }
+  
+  @keyframes slide-in {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: var(--skill-width, 100%);
+    }
+  }

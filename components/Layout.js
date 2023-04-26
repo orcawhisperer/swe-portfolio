@@ -71,9 +71,7 @@ const Layout = ({ children, pageTitle }) => {
                content="https://www.vasanthakumar.dev/images/profile.jpg"
             />
          </Head>
-         <header>
-            <Navbar />
-         </header>
+         <header>{/* <Navbar /> */}</header>
          <main className="p-4">{children}</main>
          <footer>
             <Contact />

@@ -1,21 +1,20 @@
-import React, { useState } from "react"
+import React, {useState} from "react"
+import {FaChevronDown} from "react-icons/fa"
 
-const WorkExperienceItem = ({ position }) => {
+const WorkExperienceItem = ({position}) => {
    const [collapsed, setCollapsed] = useState(true)
 
    return (
       <div
-         className={`border-l-4 border-blue-500 p-4 mb-6 transition-all duration-300 transform hover:scale-105 cursor-pointer ${
-            collapsed ? "collapsed" : ""
-         }`}
+         className={`border-l-4 border-blue-500 p-4 mb-6 transition-all duration-300 transform hover:scale-105 cursor-pointer`}
          onClick={() => setCollapsed(!collapsed)}>
          <h4 className="text-xl font-semibold mb-2 text-white shadow-text font-montserrat">
             {position.title}
             <span
                className={`inline-block ml-2 transform transition-transform duration-300 ${
-                  collapsed ? "" : "rotate-180"
+                  collapsed ? "" : "rotate-90"
                }`}>
-               <i className="fas fa-chevron-down"></i>
+               <FaChevronDown />
             </span>
          </h4>
          <p className="text-gray-300 mb-2 shadow-text font-montserrat">
@@ -32,7 +31,7 @@ const WorkExperienceItem = ({ position }) => {
    )
 }
 
-const WorkExperience = ({ workExperience }) => {
+const WorkExperience = ({workExperience}) => {
    return (
       <section
          id="work-experience"

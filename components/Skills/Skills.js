@@ -1,6 +1,7 @@
-import React, { useState } from "react"
+import React, {useState} from "react"
+import styles from "./Skills.module.css"
 
-const Skills = ({ skills }) => {
+const Skills = ({skills}) => {
    const [hoveredSkillIndex, setHoveredSkillIndex] = useState(null)
 
    const skillsByCategory = skills.reduce((acc, skill) => {
@@ -53,8 +54,12 @@ const Skills = ({ skills }) => {
                         onMouseEnter={() => setHoveredSkillIndex(index)}
                         onMouseLeave={() => setHoveredSkillIndex(null)}>
                         <div
-                           className={`w-full h-full absolute left-0 top-0 bg-gradient-to-r from-blue-600 via-blue-500 to-purple-600 skill-bar ${
-                              hoveredSkillIndex === index ? "slide-in" : ""
+                           className={`w-full h-full absolute left-0 top-0 bg-gradient-to-r from-blue-600 via-blue-500 to-purple-600 ${
+                              styles["skill-bar"]
+                           } ${
+                              hoveredSkillIndex === index
+                                 ? styles["slide-in"]
+                                 : ""
                            }`}
                            style={{
                               clipPath:

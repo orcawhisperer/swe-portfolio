@@ -2,8 +2,9 @@ import React, { useState, useEffect, useRef } from "react"
 import { useRouter } from "next/router"
 import TypingEffect from "./TypingEffect"
 import TerminalInput from "./TerminalInput"
+import styles from "./Terminal.module.css"
 
-const Terminal = () => {
+const Terminal = ({ aboutMeText }) => {
    const [inputValue, setInputValue] = useState("")
    const [isTyping, setIsTyping] = useState(false)
    const [showTerminalInput, setShowTerminalInput] = useState(false)
@@ -24,7 +25,7 @@ const Terminal = () => {
             break
          case "hi":
          case "hello":
-            // output = "Hello there!"
+            setInputValue("")
             runPrank()
             return
          case "clear":
@@ -86,7 +87,14 @@ const Terminal = () => {
                <span className="text-green-400">{messageObj.input}</span>
             </div>
             <div className="text-sm leading-relaxed font-mono">
-               <span className="text-green-400">{messageObj.output}</span>
+               {/* <span className="text-green-400">{messageObj.output}</span> */}
+               <TypingEffect
+                  text={messageObj.output}
+                  typingSpeed={40}
+                  setIsTyping={setIsTyping}
+                  isTyping={isTyping}
+                  setShowTerminalInput={setShowTerminalInput}
+               />
             </div>
          </div>
       ))
@@ -191,8 +199,10 @@ const Terminal = () => {
          {!isClosing ? (
             <div
                ref={terminalContainerRef}
-               className={`terminal bg-black p-6 rounded-md shadow-lg overflow-y-auto flex flex-col h-96 ${
-                  isClosing ? "terminal-closing" : ""
+               className={`${
+                  styles["terminal"]
+               } scroll-smooth bg-black p-6 rounded-md shadow-lg overflow-y-auto flex flex-col h-96 ${
+                  isClosing ? styles["terminal-closing"] : ""
                }`}>
                <div className="relative flex-grow">
                   <span className="text-sm leading-relaxed font-mono">
@@ -203,15 +213,16 @@ const Terminal = () => {
                   </span>
 
                   <TypingEffect
-                     text="Hii, I'm an experienced software engineer skilled in various programming langauges and technologies like Python, Go, gRPC JavaScript, Web Application Development, DevOps, Cloud and Linux. I have Bachelors Degree in Computer Science Engineering. Interested in working on Revolutionary technologies and solving real-world problems through technology..."
+                     text={aboutMeText}
                      typingSpeed={40}
                      setIsTyping={setIsTyping}
                      setShowTerminalInput={setShowTerminalInput}
                      isTyping={isTyping}
                   />
                   {renderTerminalOutput()}
-                  {!isTyping && showTerminalInput && (
+                  {!isTyping && (
                      <TerminalInput
+                        showTerminalInput={!isTyping}
                         value={inputValue}
                         isTyping={isTyping}
                         onChange={(e) => setInputValue(e.target.value)}
@@ -223,14 +234,7 @@ const Terminal = () => {
                </div>
             </div>
          ) : (
-            <p className="text-sm leading-relaxed font-mono">
-               Hi, I'm an experienced software engineer skilled in various
-               programming langauges and technologies like Python, Go, gRPC
-               JavaScript, Web Application Development, DevOps, Cloud and Linux.
-               I have Bachelors Degree in Computer Science Engineering.
-               Interested in working on Revolutionary technologies and solving
-               real-world problems through technology...
-            </p>
+            <p className="text-md leading-relaxed font-mono">{aboutMeText}</p>
          )}
       </div>
    )

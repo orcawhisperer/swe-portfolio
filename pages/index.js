@@ -25,7 +25,7 @@ import {
 
 import WorkExperience from "@/components/Experience/WorkExperience"
 import About from "@/components/About/About"
-import Skills from "@/components/Skill/Skills"
+import Skills from "@/components/Skills/Skills"
 import Hero from "@/components/Hero/Hero"
 import Certification from "@/components/Certification/Certification"
 
@@ -272,11 +272,13 @@ export default function Home() {
          ],
       },
    ]
+   const aboutMeText =
+      "Hi, I'm an experienced software engineer skilled in various programming langauges and technologies like Python, Go, gRPC JavaScript, Web Application Development, DevOps, Cloud and Linux. I have Bachelors Degree in Computer Science Engineering. Interested in working on Revolutionary technologies and solving real-world problems through technology..."
 
    return (
       <Layout pageTitle="Vasanth - Portfolio">
          <Hero />
-         <About />
+         <About aboutMeText={aboutMeText} />
          <WorkExperience workExperience={workExperience} />
          <Skills skills={skills} />
          <Certification />
