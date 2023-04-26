@@ -1,8 +1,20 @@
 import Link from "next/link"
 import { useState } from "react"
+import { FaBars, FaTimes } from "react-icons/fa"
 
 const Navbar = () => {
-   const [isOpen, setIsOpen] = useState(false)
+   const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+   const toggleMenu = () => {
+      setIsMenuOpen(!isMenuOpen)
+   }
+
+   const scrollToSection = (e, id) => {
+      e.preventDefault()
+      const target = document.getElementById(id)
+      target.scrollIntoView({ behavior: "smooth", block: "start" })
+      setIsMenuOpen(false)
+   }
 
    return (
       <nav className="bg-gradient-to-r from-gray-800 via-gray-900 to-black shadow-md fixed w-full z-10">
@@ -13,66 +25,56 @@ const Navbar = () => {
                </div>
                <div className="hidden md:block">
                   <ul className="flex items-center space-x-4">
-                     <li>
-                        <a
-                           href="#about"
-                           className="text-white hover:text-blue-20 uppercase font-montserrat">
-                           About
-                        </a>
-                     </li>
-                     <li>
-                        <a
-                           href="#work-experience"
-                           className="text-white hover:text-blue-200 uppercase font-montserrat">
-                           Experience
-                        </a>
-                     </li>
-                     <li>
-                        <a
-                           href="#skills"
-                           className="text-white hover:text-blue-200 uppercase font-montserrat">
-                           Skills
-                        </a>
-                     </li>
-                     <li>
-                        <a
-                           href="#certifications"
-                           className="text-white hover:text-blue-200 uppercase font-montserrat">
-                           Certifications
-                        </a>
-                     </li>
-                     <li>
-                        <a
-                           href="#contact"
-                           className="text-white hover:text-blue-200 uppercase font-montserrat">
-                           Contact
-                        </a>
-                     </li>
-                     {/* Add more nav items here */}
+                     {[
+                        { label: "About", id: "about" },
+                        { label: "Experience", id: "work-experience" },
+                        { label: "Skills", id: "skills" },
+                        { label: "Certifications", id: "certifications" },
+                        { label: "Contact", id: "contact" },
+                     ].map(({ label, id }) => (
+                        <li key={id}>
+                           <a
+                              href={`#${id}`}
+                              onClick={(e) => scrollToSection(e, id)}
+                              className="text-white hover:text-blue-200 uppercase font-montserrat">
+                              {label}
+                           </a>
+                        </li>
+                     ))}
                   </ul>
                </div>
-               <div className="md:hidden flex items-center">
-                  <button
-                     className="text-white hover:text-blue-200 uppercase focus:outline-none focus:text-blue-200"
-                     onClick={() => setIsOpen(!isOpen)}>
-                     <svg className="h-6 w-6 fill-current" viewBox="0 0 24 24">
-                        {isOpen ? (
-                           <path
-                              fillRule="evenodd"
-                              d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-8-8a1 1 0 0 1 0-1.414l8-8a1 1 0 0 1 1.414 1.414L11.414 12l6.864 4.864z"
-                              clipRule="evenodd"
-                           />
-                        ) : (
-                           <path
-                              fillRule="evenodd"
-                              d="M5.722 7.136a1 1 0 0 1 1.414-1.414l8 8a1 1 0 0 1 0 1.414l-8 8a1 1 0 0 1-1.414-1.414L12.586 12 5.722 7.136z"
-                              clipRule="evenodd"
-                           />
-                        )}
-                     </svg>
+               <div className="md:hidden">
+                  <button onClick={toggleMenu}>
+                     {isMenuOpen ? (
+                        <FaTimes className="text-white" />
+                     ) : (
+                        <FaBars className="text-white" />
+                     )}
                   </button>
                </div>
             </div>
+            {isMenuOpen && (
+               <div className="mt-4 md:hidden">
+                  <ul className="flex flex-col space-y-4">
+                     {[
+                        { label: "About", id: "about" },
+                        { label: "Experience", id: "work-experience" },
+                        { label: "Skills", id: "skills" },
+                        { label: "Certifications", id: "certifications" },
+                        { label: "Contact", id: "contact" },
+                     ].map(({ label, id }) => (
+                        <li key={id}>
+                           <a
+                              href={`#${id}`}
+                              onClick={(e) => scrollToSection(e, id)}
+                              className="text-white hover:text-blue-200 uppercase font-montserrat">
+                              {label}
+                           </a>
+                        </li>
+                     ))}
+                  </ul>
+               </div>
+            )}
          </div>
       </nav>
    )

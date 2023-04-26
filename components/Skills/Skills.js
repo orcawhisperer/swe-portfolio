@@ -1,7 +1,7 @@
-import React, {useState} from "react"
+import React, { useState } from "react"
 import styles from "./Skills.module.css"
 
-const Skills = ({skills}) => {
+const Skills = ({ skills }) => {
    const [hoveredSkillIndex, setHoveredSkillIndex] = useState(null)
 
    const skillsByCategory = skills.reduce((acc, skill) => {
@@ -23,21 +23,21 @@ const Skills = ({skills}) => {
             SKILLS
          </h2>
          <div className="container mx-auto">
-            <div className="flex justify-center mb-8 space-x-4 overflow-x-auto">
+            <div className="flex justify-center mb-8 space-x-4 overflow-x-auto flex-wrap">
                {categories.map((category, index) => (
                   <button
                      key={index}
                      onClick={() => setActiveCategory(category)}
-                     className={`text-white font-semibold py-2 px-4 rounded font-montserrat ${
+                     className={`text-white font-semibold py-2 px-4 rounded font-montserrat mb-4 ${
                         activeCategory === category
-                           ? "py-16 bg-gradient-to-br from-red-500 via-yellow-500 via-green-500 to-blue-500"
+                           ? "bg-gradient-to-br from-red-500 via-yellow-500 via-green-500 to-blue-500"
                            : "bg-gray-600"
                      }`}>
                      {category}
                   </button>
                ))}
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                {skillsByCategory[activeCategory].map((skill, index) => (
                   <div key={index} className="flex flex-col items-center">
                      <div
