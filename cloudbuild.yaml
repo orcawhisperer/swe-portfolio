@@ -8,7 +8,7 @@ steps:
         [
            "app",
            "deploy",
-           "--project=theta-carving-384614",
+           "--project=$PROJECT_ID",
            "--version=$SHORT_SHA",
            "--quiet",
         ]

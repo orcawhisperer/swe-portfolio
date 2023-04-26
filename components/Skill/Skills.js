@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-export const Skills = ({ skills }) => {
+const Skills = ({ skills }) => {
    const [hoveredSkillIndex, setHoveredSkillIndex] = useState(null)
 
    const skillsByCategory = skills.reduce((acc, skill) => {
@@ -79,3 +79,5 @@ export const Skills = ({ skills }) => {
       </section>
    )
 }
+
+export default Skills

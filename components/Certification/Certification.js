@@ -1,6 +1,6 @@
 import React from "react"
 
-export const Certification = () => {
+const Certification = () => {
    const certifications = [
       {
          title: "Associate Cloud Engineer",
@@ -53,3 +53,5 @@ export const Certification = () => {
       </section>
    )
 }
+
+export default Certification

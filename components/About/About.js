@@ -1,8 +1,8 @@
 import Image from "next/image"
 import React from "react"
-import Terminal from "./Terminal"
+import Terminal from "@/components/Terminal/Terminal"
 
-export const About = ({ about }) => {
+const About = ({ about }) => {
    return (
       <section
          id="about"
@@ -51,3 +51,5 @@ export const About = ({ about }) => {
       </section>
    )
 }
+
+export default About

@@ -23,11 +23,11 @@ import {
    SiWindows,
 } from "react-icons/si"
 
-import WorkExperience from "@/components/WorkExperience"
-import { About } from "@/components/About"
-import { Skills } from "@/components/Skills"
-import { Hero } from "@/components/Hero"
-import { Certification } from "@/components/Certification"
+import WorkExperience from "@/components/Experience/WorkExperience"
+import About from "@/components/About/About"
+import Skills from "@/components/Skill/Skills"
+import Hero from "@/components/Hero/Hero"
+import Certification from "@/components/Certification/Certification"
 
 export default function Home() {
    const skills = [

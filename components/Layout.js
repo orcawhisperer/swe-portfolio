@@ -1,7 +1,7 @@
 import React from "react"
 import Head from "next/head"
-import Navbar from "./NavBar"
-import { Contact } from "./Contact"
+import Navbar from "./NavBar/NavBar"
+import { Contact } from "./Contact/Contact"
 
 const Layout = ({ children, pageTitle }) => {
    return (
