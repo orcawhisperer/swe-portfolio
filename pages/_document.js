@@ -11,14 +11,12 @@ export default function Document() {
                crossorigin
             />
             <link
-               as="style"
-               rel="preload"
                href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+               rel="stylesheet"
             />
             <link
                href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
-               rel="preload"
-               as="style"
+               rel="stylesheet"
             />
          </Head>
          <body>
