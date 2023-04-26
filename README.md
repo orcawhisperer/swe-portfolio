@@ -18,4 +18,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-[Demo](https://www.vasanthakumar.dev)
+Open [https://www.vasanthakumar.dev](https://www.vasanthakumar.dev) to see the deployed version.
