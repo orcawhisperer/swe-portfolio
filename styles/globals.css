@@ -30,3 +30,34 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+
+/* components/MatrixEffectHTML.css */
+.matrix-container {
+  position: relative;
+  overflow: hidden;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 16px;
+  color: #00ff00;
+}
+
+.matrix-column {
+  position: absolute;
+  animation-name: matrix-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  white-space: nowrap;
+}
+
+@keyframes matrix-fall {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+
+

@@ -4,7 +4,6 @@ const TerminalInput = ({
    value,
    onChange,
    processCommand,
-   isTyping,
    handleUpArrow,
    handleDownArrow,
    showTerminalInput,
@@ -35,8 +34,8 @@ const TerminalInput = ({
                   onChange={onChange}
                   onKeyDown={handleKeyDown()}
                   className="block bg-transparent text-green-500 font-mono focus:outline-none flex-grow w-full truncate"
-                  style={{caretColor: "green"}}
-                  autoFocus={isTyping ? false : true}
+                  style={{ caretColor: "green" }}
+                  autoFocus={showTerminalInput ? true : false}
                />
             </div>
          </div>

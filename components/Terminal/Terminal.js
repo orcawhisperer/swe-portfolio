@@ -1,18 +1,26 @@
 import React, { useState, useEffect, useRef } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import { useRouter } from "next/router"
 import TypingEffect from "./TypingEffect"
 import TerminalInput from "./TerminalInput"
 import styles from "./Terminal.module.css"
 
+import {
+   addHistory,
+   deleteHistory,
+   setIsTyping,
+   setIsClosing,
+} from "@/sagas/reducers/terminal.reducer"
+
 const Terminal = ({ aboutMeText }) => {
    const [inputValue, setInputValue] = useState("")
-   const [isTyping, setIsTyping] = useState(false)
-   const [showTerminalInput, setShowTerminalInput] = useState(false)
-   const [outputMessages, setOutputMessages] = useState([])
    const [commandHistoryIndex, setCommandHistoryIndex] = useState(-1)
-   const [isClosing, setIsClosing] = useState(false)
    const router = useRouter()
    const terminalContainerRef = useRef(null)
+   const dispatch = useDispatch()
+   const history = useSelector((state) => state.terminal.terminal.history)
+   const isTyping = useSelector((state) => state.terminal.terminal.isTyping)
+   const isClosing = useSelector((state) => state.terminal.terminal.isClosing)
 
    const processCommand = async (command) => {
       let output = ""
@@ -29,7 +37,7 @@ const Terminal = ({ aboutMeText }) => {
             runPrank()
             return
          case "clear":
-            setOutputMessages([])
+            dispatch(deleteHistory())
             break
          case "home":
             output = "redirecting to home section..."
@@ -56,14 +64,16 @@ const Terminal = ({ aboutMeText }) => {
             break
          case "exit":
             setTimeout(() => {
-               setOutputMessages([
-                  ...outputMessages,
-                  { input: command, output: "Closing terminal... Bye!" },
-               ])
+               dispatch(
+                  addHistory({
+                     input: command,
+                     output: "Closing terminal... Bye!",
+                  })
+               )
             }, 1000)
             setTimeout(() => {
-               setOutputMessages([])
-               setIsClosing(true)
+               dispatch(deleteHistory())
+               dispatch(setIsClosing(true))
                window.close()
             }, 2000)
 
@@ -73,13 +83,18 @@ const Terminal = ({ aboutMeText }) => {
             setInputValue("Invalid Command!")
       }
       if (output) {
-         setOutputMessages([...outputMessages, { input: command, output }])
+         dispatch(
+            addHistory({
+               input: command,
+               output,
+            })
+         )
       }
       setInputValue("")
    }
 
-   const renderTerminalOutput = () => {
-      return outputMessages.map((messageObj, index) => (
+   const renderTerminalHistory = () => {
+      return history?.map((messageObj, index) => (
          <div key={index}>
             <div className="text-sm leading-relaxed font-mono">
                <span className="text-yellow-400">guest@command-center</span>
@@ -93,7 +108,6 @@ const Terminal = ({ aboutMeText }) => {
                   typingSpeed={40}
                   setIsTyping={setIsTyping}
                   isTyping={isTyping}
-                  setShowTerminalInput={setShowTerminalInput}
                />
             </div>
          </div>
@@ -101,21 +115,16 @@ const Terminal = ({ aboutMeText }) => {
    }
 
    const handleUpArrow = () => {
-      if (commandHistoryIndex < outputMessages.length - 1) {
+      if (commandHistoryIndex < history.length - 1) {
          setCommandHistoryIndex(commandHistoryIndex + 1)
-         setInputValue(
-            outputMessages[outputMessages.length - commandHistoryIndex - 2]
-               .input
-         )
+         setInputValue(history[history.length - commandHistoryIndex - 2].input)
       }
    }
 
    const handleDownArrow = () => {
       if (commandHistoryIndex > 0) {
          setCommandHistoryIndex(commandHistoryIndex - 1)
-         setInputValue(
-            outputMessages[outputMessages.length - commandHistoryIndex].input
-         )
+         setInputValue(history[history.length - commandHistoryIndex].input)
       } else if (commandHistoryIndex === 0) {
          setCommandHistoryIndex(-1)
          setInputValue("")
@@ -169,22 +178,12 @@ const Terminal = ({ aboutMeText }) => {
 
    const runPrank = async () => {
       for (const cmd of prankCommands) {
-         setIsTyping(true)
          await delay(cmd.command.length * 50) // Simulate typing the command
-         setOutputMessages((prevOutputMessages) => [
-            ...prevOutputMessages,
-            { input: "", output: cmd.command },
-         ])
-
-         setIsTyping(true)
+         dispatch(addHistory({ input: "", output: cmd.command }))
          await delay(cmd.response.length * 50) // Simulate typing the response
-         setOutputMessages((prevOutputMessages) => [
-            ...prevOutputMessages,
-            { input: "", output: cmd.response },
-         ])
+         dispatch(addHistory({ input: "", output: cmd.response }))
       }
       setInputValue("")
-      setIsTyping(false)
    }
 
    useEffect(() => {
@@ -192,7 +191,7 @@ const Terminal = ({ aboutMeText }) => {
          terminalContainerRef.current.scrollTop =
             terminalContainerRef.current.scrollHeight
       }
-   }, [outputMessages])
+   }, [history])
 
    return (
       <div>
@@ -216,25 +215,23 @@ const Terminal = ({ aboutMeText }) => {
                      text={aboutMeText}
                      typingSpeed={40}
                      setIsTyping={setIsTyping}
-                     setShowTerminalInput={setShowTerminalInput}
                      isTyping={isTyping}
                   />
-                  {renderTerminalOutput()}
-                  {!isTyping && (
-                     <TerminalInput
-                        showTerminalInput={!isTyping}
-                        value={inputValue}
-                        isTyping={isTyping}
-                        onChange={(e) => setInputValue(e.target.value)}
-                        processCommand={processCommand}
-                        handleUpArrow={handleUpArrow}
-                        handleDownArrow={handleDownArrow}
-                     />
-                  )}
+                  {renderTerminalHistory()}
+                  <TerminalInput
+                     showTerminalInput={!isTyping}
+                     value={inputValue}
+                     onChange={(e) => setInputValue(e.target.value)}
+                     processCommand={processCommand}
+                     handleUpArrow={handleUpArrow}
+                     handleDownArrow={handleDownArrow}
+                  />
                </div>
             </div>
          ) : (
-            <p className="text-md leading-relaxed font-mono">{aboutMeText}</p>
+            <p className="text-md leading-relaxed md:text-xl lg:text-xl p-2 font-mono">
+               {aboutMeText}
+            </p>
          )}
       </div>
    )

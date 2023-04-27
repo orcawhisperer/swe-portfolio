@@ -1,12 +1,14 @@
 import React from "react"
 import styles from "./Hero.module.css"
 import { FaChevronDown } from "react-icons/fa"
+import MatrixEffectHTML from "../MatrixEffect/MatrixEffect"
 
 const Hero = () => {
    return (
       <section
          id="hero"
          className={`${styles["hero-section"]} text-center pt-16 pb-20 text-white sm:text-base md:text-lg lg:text-xl`}>
+         {/* <MatrixEffectHTML /> */}
          <h1
             className={`sm:text-4xl md:text-5xl lg:text-6xl uppercase font-bold font-montserrat animate-fadeIn ${styles["hero-name"]}`}>
             VasanthaKumar A

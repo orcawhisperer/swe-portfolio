@@ -1,14 +1,11 @@
 // TypingEffect.js
 import React, { useEffect, useState } from "react"
 import styles from "./Terminal.module.css"
+import { useDispatch } from "react-redux"
 
-const TypingEffect = ({
-   text,
-   typingSpeed,
-   setIsTyping,
-   setShowTerminalInput,
-}) => {
+const TypingEffect = ({ text, typingSpeed, setIsTyping, isTyping }) => {
    const [typedText, setTypedText] = useState("")
+   const dispatch = useDispatch()
 
    useEffect(() => {
       let index = 0
@@ -17,10 +14,11 @@ const TypingEffect = ({
          if (index < text.length - 1) {
             setTypedText((prevTypedText) => prevTypedText + text[index])
             index++
-            setIsTyping(true)
+            if (!isTyping) {
+               dispatch(setIsTyping(true))
+            }
          } else {
-            setIsTyping(false)
-            setShowTerminalInput(true)
+            dispatch(setIsTyping(false))
             clearInterval(interval)
          }
       }, typingSpeed)
