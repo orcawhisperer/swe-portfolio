@@ -276,7 +276,7 @@ export default function Home() {
       "Hi, I'm an experienced software engineer skilled in various programming langauges and technologies like Python, Go, gRPC JavaScript, Web Application Development, DevOps, Cloud and Linux. I have Bachelors Degree in Computer Science Engineering. Interested in working on Revolutionary technologies and solving real-world problems through technology..."
 
    return (
-      <Layout pageTitle="Vasanth - Portfolio">
+      <Layout pageTitle="Vasanth - SWE">
          <Hero />
          <About aboutMeText={aboutMeText} />
          <WorkExperience workExperience={workExperience} />
