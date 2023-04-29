@@ -5,6 +5,10 @@
   font-family: "Montserrat", sans-serif;
 }
 
+.hero-section-prank {
+  background-image: linear-gradient(to right, #172714, #061109, #172714, #000001, #172714);
+}
+
 .hero-name {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }

@@ -1,7 +1,8 @@
 // components/MatrixEffectHTML.js
 import React, { useEffect, useRef } from "react"
+import styles from "./MatrixEffect.module.css"
 
-const MatrixEffectHTML = () => {
+const MatrixEffect = () => {
    const containerRef = useRef()
 
    useEffect(() => {
@@ -12,13 +13,13 @@ const MatrixEffectHTML = () => {
 
       const createColumn = () => {
          const column = document.createElement("div")
-         column.className = "matrix-column"
+         column.className = `${styles["matrix-column"]}`
 
          const characterCount = Math.floor(Math.random() * 15) + 10
 
          for (let i = 0; i < characterCount; i++) {
             const character = document.createElement("div")
-            character.className = "matrix-character"
+            character.className = `${styles["matrix-character"]}`
             character.textContent =
                characters[Math.floor(Math.random() * characters.length)]
             column.appendChild(character)
@@ -35,7 +36,7 @@ const MatrixEffectHTML = () => {
          }, parseFloat(column.style.animationDuration) * 1000)
       }
 
-      for (let i = 0; i < 100; i++) {
+      for (let i = 0; i < 50; i++) {
          createColumn()
       }
    }, [])
@@ -43,10 +44,10 @@ const MatrixEffectHTML = () => {
    return (
       <div
          ref={containerRef}
-         className="matrix-container"
+         className={`${styles["matrix-container"]}`}
          style={{
             position: "fixed",
-            zIndex: -1,
+            zIndex: 0,
             top: 0,
             left: 0,
             width: "100%",
@@ -56,4 +57,4 @@ const MatrixEffectHTML = () => {
    )
 }
 
-export default MatrixEffectHTML
+export default MatrixEffect

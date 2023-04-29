@@ -1,14 +1,24 @@
 import React from "react"
 import styles from "./Hero.module.css"
 import { FaChevronDown } from "react-icons/fa"
-import MatrixEffectHTML from "../MatrixEffect/MatrixEffect"
+import { useSelector } from "react-redux"
+import MatrixEffect from "../MatrixEffect/MatrixEffect"
 
 const Hero = () => {
+   const isPrankRunning = useSelector(
+      (state) => state.terminal.terminal.prank.isRunning
+   )
+
    return (
       <section
          id="hero"
-         className={`${styles["hero-section"]} text-center pt-16 pb-20 text-white sm:text-base md:text-lg lg:text-xl`}>
-         {/* <MatrixEffectHTML /> */}
+         style={{ transform: "translate3d(0, 0, 0)" }}
+         className={`transition-all transform duration-500 ${
+            isPrankRunning
+               ? styles["hero-section-prank"]
+               : styles["hero-section"]
+         } text-center pt-16 pb-20 text-white sm:text-base md:text-lg lg:text-xl`}>
+         {isPrankRunning && <MatrixEffect />}
          <h1
             className={`sm:text-4xl md:text-5xl lg:text-6xl uppercase font-bold font-montserrat animate-fadeIn ${styles["hero-name"]}`}>
             VasanthaKumar A

@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useEffect } from "react"
+import { useSelector } from "react-redux"
 
 const TerminalInput = ({
    value,
@@ -6,8 +7,8 @@ const TerminalInput = ({
    processCommand,
    handleUpArrow,
    handleDownArrow,
-   showTerminalInput,
 }) => {
+   const isTyping = useSelector((state) => state.terminal.terminal.isTyping)
    const handleKeyDown = () => (e) => {
       if (e.key === "Enter") {
          processCommand(value)
@@ -19,8 +20,9 @@ const TerminalInput = ({
          handleDownArrow()
       }
    }
+
    return (
-      showTerminalInput && (
+      !isTyping && (
          <div className="flex w-full">
             <span className="text-sm leading-relaxed font-mono">
                <span className="text-yellow-400">guest@command-center</span>
@@ -35,7 +37,7 @@ const TerminalInput = ({
                   onKeyDown={handleKeyDown()}
                   className="block bg-transparent text-green-500 font-mono focus:outline-none flex-grow w-full truncate"
                   style={{ caretColor: "green" }}
-                  autoFocus={showTerminalInput ? true : false}
+                  autoFocus={!isTyping ? true : false}
                />
             </div>
          </div>

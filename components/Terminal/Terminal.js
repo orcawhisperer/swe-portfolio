@@ -8,8 +8,8 @@ import styles from "./Terminal.module.css"
 import {
    addHistory,
    deleteHistory,
-   setIsTyping,
-   setIsClosing,
+   runPrank,
+   setShowTerminal,
 } from "@/sagas/reducers/terminal.reducer"
 
 const Terminal = ({ aboutMeText }) => {
@@ -19,8 +19,13 @@ const Terminal = ({ aboutMeText }) => {
    const terminalContainerRef = useRef(null)
    const dispatch = useDispatch()
    const history = useSelector((state) => state.terminal.terminal.history)
-   const isTyping = useSelector((state) => state.terminal.terminal.isTyping)
-   const isClosing = useSelector((state) => state.terminal.terminal.isClosing)
+   const showTerminal = useSelector(
+      (state) => state.terminal.terminal.showTerminal
+   )
+   const prank = useSelector((state) => state.terminal.terminal.prank)
+   const terminalShowCount = useSelector(
+      (state) => state.terminal.terminal.terminalShowCount
+   )
 
    const processCommand = async (command) => {
       let output = ""
@@ -33,9 +38,14 @@ const Terminal = ({ aboutMeText }) => {
             break
          case "hi":
          case "hello":
-            setInputValue("")
-            runPrank()
-            return
+            if (!prank.isRunning && prank.count < 1) {
+               setInputValue("")
+               dispatch(runPrank(true))
+               executePrank()
+            } else {
+               output = "Hello there!"
+            }
+            break
          case "clear":
             dispatch(deleteHistory())
             break
@@ -73,7 +83,7 @@ const Terminal = ({ aboutMeText }) => {
             }, 1000)
             setTimeout(() => {
                dispatch(deleteHistory())
-               dispatch(setIsClosing(true))
+               dispatch(setShowTerminal(false))
                window.close()
             }, 2000)
 
@@ -102,13 +112,7 @@ const Terminal = ({ aboutMeText }) => {
                <span className="text-green-400">{messageObj.input}</span>
             </div>
             <div className="text-sm leading-relaxed font-mono">
-               {/* <span className="text-green-400">{messageObj.output}</span> */}
-               <TypingEffect
-                  text={messageObj.output}
-                  typingSpeed={40}
-                  setIsTyping={setIsTyping}
-                  isTyping={isTyping}
-               />
+               <TypingEffect text={messageObj.output} typingSpeed={40} />
             </div>
          </div>
       ))
@@ -176,7 +180,7 @@ const Terminal = ({ aboutMeText }) => {
       },
    ]
 
-   const runPrank = async () => {
+   const executePrank = async () => {
       for (const cmd of prankCommands) {
          await delay(cmd.command.length * 50) // Simulate typing the command
          dispatch(addHistory({ input: "", output: cmd.command }))
@@ -184,6 +188,7 @@ const Terminal = ({ aboutMeText }) => {
          dispatch(addHistory({ input: "", output: cmd.response }))
       }
       setInputValue("")
+      dispatch(runPrank(false))
    }
 
    useEffect(() => {
@@ -194,16 +199,16 @@ const Terminal = ({ aboutMeText }) => {
    }, [history])
 
    return (
-      <div>
-         {!isClosing ? (
-            <div
-               ref={terminalContainerRef}
-               className={`${
-                  styles["terminal"]
-               } scroll-smooth bg-black p-6 rounded-md shadow-lg overflow-y-auto flex flex-col h-96 ${
-                  isClosing ? styles["terminal-closing"] : ""
-               }`}>
-               <div className="relative flex-grow">
+      <div
+         ref={terminalContainerRef}
+         className={`${
+            styles["terminal"]
+         } scroll-smooth bg-black p-6 rounded-md shadow-lg overflow-y-auto flex flex-col h-96 ${
+            !showTerminal ? styles["terminal-closing"] : ""
+         }`}>
+         <div className="relative flex-grow">
+            {terminalShowCount <= 1 && (
+               <>
                   <span className="text-sm leading-relaxed font-mono">
                      <span className="text-red-400">
                         vasanth@command-center
@@ -211,28 +216,18 @@ const Terminal = ({ aboutMeText }) => {
                      <span className="text-red-500">:/# </span>
                   </span>
 
-                  <TypingEffect
-                     text={aboutMeText}
-                     typingSpeed={40}
-                     setIsTyping={setIsTyping}
-                     isTyping={isTyping}
-                  />
-                  {renderTerminalHistory()}
-                  <TerminalInput
-                     showTerminalInput={!isTyping}
-                     value={inputValue}
-                     onChange={(e) => setInputValue(e.target.value)}
-                     processCommand={processCommand}
-                     handleUpArrow={handleUpArrow}
-                     handleDownArrow={handleDownArrow}
-                  />
-               </div>
-            </div>
-         ) : (
-            <p className="text-md leading-relaxed md:text-xl lg:text-xl p-2 font-mono">
-               {aboutMeText}
-            </p>
-         )}
+                  <TypingEffect text={aboutMeText} typingSpeed={40} />
+               </>
+            )}
+            {renderTerminalHistory()}
+            <TerminalInput
+               value={inputValue}
+               onChange={(e) => setInputValue(e.target.value)}
+               processCommand={processCommand}
+               handleUpArrow={handleUpArrow}
+               handleDownArrow={handleDownArrow}
+            />
+         </div>
       </div>
    )
 }
