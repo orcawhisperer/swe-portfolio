@@ -36,7 +36,7 @@ const MatrixEffect = () => {
          }, parseFloat(column.style.animationDuration) * 1000)
       }
 
-      for (let i = 0; i < 50; i++) {
+      for (let i = 0; i < 75; i++) {
          createColumn()
       }
    }, [])

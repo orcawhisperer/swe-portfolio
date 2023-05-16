@@ -1,5 +1,6 @@
 /* components/MatrixEffectHTML.css */
 .matrix-container {
+    background-color: #080808;
     position: relative;
     overflow: hidden;
     font-family: 'Courier New', monospace;

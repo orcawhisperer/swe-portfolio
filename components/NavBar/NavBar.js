@@ -46,9 +46,9 @@ const Navbar = () => {
                <div className="md:hidden">
                   <button onClick={toggleMenu}>
                      {isMenuOpen ? (
-                        <FaTimes className="text-white" />
+                        <FaTimes className="text-white" title="Cancel" />
                      ) : (
-                        <FaBars className="text-white" />
+                        <FaBars className="text-white" title="Menu" />
                      )}
                   </button>
                </div>

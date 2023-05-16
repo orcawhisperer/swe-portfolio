@@ -27,7 +27,7 @@ const Layout = ({ children, pageTitle }) => {
             />
             <meta
                property="og:title"
-               content="Software Engineer - Vasantha Kumar"
+               content="Vasantha Kumar - Software Engineer"
             />
             <meta
                property="og:description"
@@ -42,7 +42,7 @@ const Layout = ({ children, pageTitle }) => {
             <meta name="twitter:card" content="summary_large_image" />
             <meta
                name="twitter:title"
-               content="Software Engineer - Vasantha Kumar"
+               content="Vasantha Kumar - Software Engineer"
             />
             <meta
                name="twitter:description"
