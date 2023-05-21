@@ -26,55 +26,36 @@ const Hero3 = () => {
          return camera
       })
 
+      const light = new THREE.PointLight(0xffffff, 1, 100)
+      light.position.set(0, 2, 100)
+      scene.add(light)
+
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.5) // Add ambient light
+      scene.add(ambientLight)
+
       const renderer = new THREE.WebGLRenderer({ alpha: true })
       renderer.setClearColor("#0A0F19")
       renderer.setSize(width, height)
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
       container.appendChild(renderer.domElement)
 
-      const cubeSize = 120
+      const cubeSize = 30
       const geometry = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize)
+
+      const colors = ["#4285F4", "#EA4335", "#FBBC05", "#34A853"]
+      const materials = colors.map(
+         (color) => new THREE.MeshPhongMaterial({ color })
+      )
 
       const textMaterial = new THREE.MeshNormalMaterial({
          transparent: false,
-         opacity: 1,
       })
 
       const group = new THREE.Group()
       const textGroup = new THREE.Group()
-      for (let i = 0; i < 250; i++) {
-         const geometry = new THREE.BoxBufferGeometry(
-            cubeSize,
-            cubeSize,
-            cubeSize
-         )
-         const numFaces = geometry.getAttribute("position").count / 6
-
-         const colors = new Float32Array(numFaces * 6 * 3) // 6 vertices per face, 3 components per vertex
-
-         for (let j = 0; j < numFaces; j++) {
-            const color = new THREE.Color(Math.random() * 0x00ff00)
-            for (let k = 0; k < 6; k++) {
-               // 6 vertices per face
-               colors[(j * 6 + k) * 3] = color.r
-               colors[(j * 6 + k) * 3 + 1] = color.g
-               colors[(j * 6 + k) * 3 + 2] = color.b
-            }
-         }
-
-         geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3))
-         const material = new THREE.MeshBasicMaterial({
-            vertexColors: true,
-            opacity: 0.5,
-            transparent: true,
-         })
-
-         // const color = new THREE.Color(Math.random() * 0xffffff) // Generate a random color
-         // const material = new THREE.MeshBasicMaterial({
-         //    color: color, // Set the color
-         //    transparent: true,
-         // })
-
+      for (let i = 0; i < 750; i++) {
+         const material =
+            materials[Math.floor(Math.random() * materials.length)]
          const mesh = new THREE.Mesh(geometry, material)
          const dist = farDistance / 3
          const distDouble = dist * 2
@@ -97,16 +78,14 @@ const Hero3 = () => {
       scene.add(group)
 
       const loader = new FontLoader()
-      const nameTextMesh = new THREE.Mesh()
-      const titleTextMesh = new THREE.Mesh()
 
       const createTypo = (font) => {
          const name = "VASANTHAKUMAR"
-         const title = "Software Engineer | Cloud Architect | Tech Enthusiast"
+         const title = "SOFTWARE ENGINEER | CLOUD ARCHITECT | TECH ENTHUSIAST"
          const typoProperties = {
             font: font,
-            size: cubeSize * 2,
-            height: cubeSize / 4,
+            size: cubeSize * 8,
+            height: cubeSize / 8,
             curveSegments: 24,
             bevelEnabled: true,
             bevelThickness: 20,
@@ -115,21 +94,30 @@ const Hero3 = () => {
             bevelSegments: 16,
          }
 
-         const text = new TextGeometry(name, typoProperties)
-         const titleText = new TextGeometry(title, typoProperties)
-         nameTextMesh.geometry = text
-         nameTextMesh.material = textMaterial
-         nameTextMesh.position.x = cubeSize * -10
-         nameTextMesh.position.z = cubeSize * 5
+         // scene.add(textGroup)
+         // For each character in the name, create a new TextGeometry and apply a different material
+         let x = cubeSize * -20
+         for (let i = 0; i < name.length; i++) {
+            const char = name[i]
+            const textGeo = new TextGeometry(char, typoProperties)
+            const textMesh = new THREE.Mesh(
+               textGeo,
+               materials[i % materials.length]
+            )
+            textMesh.position.x = x
+            textMesh.position.z = cubeSize
+            x += cubeSize * 8 // Adjust x position for the next letter
 
-         titleTextMesh.geometry = titleText
-         titleTextMesh.material = textMaterial
-         titleTextMesh.position.x = cubeSize * -35
-         titleTextMesh.position.z = cubeSize * 5
-         titleTextMesh.position.y = cubeSize * -5
+            textGroup.add(textMesh)
+         }
 
-         textGroup.add(nameTextMesh)
-         textGroup.add(titleTextMesh)
+         const titleGeo = new TextGeometry(title, typoProperties)
+
+         const titleMesh = new THREE.Mesh(titleGeo, textMaterial)
+         titleMesh.position.x = cubeSize * -140
+         titleMesh.position.z = cubeSize
+         titleMesh.position.y = cubeSize * -20
+         textGroup.add(titleMesh)
 
          scene.add(textGroup)
       }
@@ -165,22 +153,26 @@ const Hero3 = () => {
          const width = container.clientWidth
          const height = container.clientHeight
          setCamera((camera) => {
-            camera.aspect = window.innerWidth / height
+            camera.aspect = width / height // Change this line
             camera.updateProjectionMatrix()
             return camera
          })
-         renderer.setSize(window.innerWidth, height)
+         renderer.setSize(width, height) // And this one
       }
 
       document.addEventListener("mousemove", mouseFX.onMouseMove, false)
       document.addEventListener("touchmove", mouseFX.onTouchMove, false)
       window.addEventListener("resize", onWindowResize, false)
 
-      const animate = () => {
-         requestAnimationFrame(animate)
+      setScene(scene)
 
-         camera.position.x += 1 * 0.05
-         camera.position.y += -1 * 0.05
+      let frameId = null
+
+      const animate = () => {
+         frameId = requestAnimationFrame(animate)
+
+         camera.position.x += (mouseX - camera.position.x) * 0.05
+         camera.position.y += (-mouseY - camera.position.y) * 0.05
          camera.position.z = farDistance / 4
 
          camera.lookAt(scene.position)
@@ -201,6 +193,8 @@ const Hero3 = () => {
       return () => {
          document.removeEventListener("mousemove", mouseFX.onMouseMove)
          document.removeEventListener("touchmove", mouseFX.onTouchMove)
+         cancelAnimationFrame(frameId)
+         renderer.dispose()
          window.removeEventListener("resize", onWindowResize, false)
          container.removeChild(renderer.domElement) // remove the renderer's DOM element
       }
