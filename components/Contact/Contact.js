@@ -9,7 +9,7 @@ export const Contact = () => {
       github: "https://github.com/iamvasanth07",
       linkedin: "https://www.linkedin.com/in/iamvasanth07/",
       twitter: "https://twitter.com/iamvasanth07",
-      email: "kvasanth373@gmail.com",
+      email: "mailto:kvasanth373@gmail.com",
    }
 
    const renderIcon = (key) => {
