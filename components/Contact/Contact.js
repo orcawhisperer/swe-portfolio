@@ -8,7 +8,7 @@ export const Contact = () => {
    const socialLinks = {
       github: "https://github.com/iamvasanth07",
       linkedin: "https://www.linkedin.com/in/iamvasanth07/",
-      twitter: "https://twitter.com/iamvasanth07",
+      // twitter: "https://twitter.com/iamvasanth07",
       email: "mailto:kvasanth373@gmail.com",
    }
 
