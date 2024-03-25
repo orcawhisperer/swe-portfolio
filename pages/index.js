@@ -21,6 +21,7 @@ import {
    SiLinux,
    SiApple,
    SiWindows,
+   SiRust,
 } from "react-icons/si"
 
 import WorkExperience from "@/components/Experience/WorkExperience"
@@ -48,6 +49,15 @@ export default function Home() {
          proficiencyLevel: 73,
          color: "text-green-500",
          url: "https://go.dev/",
+      },
+      {
+         title: "Rust",
+         category: "Programming",
+         icon: <SiRust color="#EE4C2C" />,
+         proficiency: "Beginner",
+         proficiencyLevel: 50,
+         color: "text-gray-500",
+         url: "https://www.rust-lang.org/",
       },
       {
          title: "C/C++",
