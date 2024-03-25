@@ -2,6 +2,7 @@ import React from "react"
 import Head from "next/head"
 import Navbar from "./NavBar/NavBar"
 import { Contact } from "./Contact/Contact"
+import { Analytics } from "@vercel/analytics/react"
 
 const Layout = ({ children, pageTitle }) => {
    return (
@@ -56,7 +57,11 @@ const Layout = ({ children, pageTitle }) => {
          <header>
             <Navbar />
          </header>
-         <main>{children}</main>
+         <main>
+            {children}
+            <Analytics />
+         </main>
+         {/* <Analytics /> */}
          <footer>
             <Contact />
          </footer>
