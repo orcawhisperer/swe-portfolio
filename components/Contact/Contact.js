@@ -30,7 +30,7 @@ export const Contact = () => {
    return (
       <section
          id="contact"
-         className="py-16 bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500">
+         className="py-16 bg-gradient-to-r from-gray-800 via-gray-900 to-black">
          <div className="container mx-auto">
             <h2 className="text-4xl font-bold mb-8 text-center text-white shadow-text font-montserrat">
                CONTACT

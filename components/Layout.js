@@ -56,7 +56,7 @@ const Layout = ({ children, pageTitle }) => {
          <header>
             <Navbar />
          </header>
-         <main className="p-4">{children}</main>
+         <main>{children}</main>
          <footer>
             <Contact />
          </footer>
