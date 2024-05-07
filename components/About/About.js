@@ -74,13 +74,11 @@ const About = ({ aboutMeText }) => {
                   </ul>
                </div>
                <div className="max-w-md mx-auto image-container">
-                  <Image
+                  <img
                      priority
                      src="/images/profile.jpg"
                      alt="Vasantha Kumar"
-                     className="w-3/4 h-auto shadow-lg transition rounded-full duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105 cursor-pointer"
-                     width={500}
-                     height={500}
+                     className="shadow-lg transition rounded-full w-96 h-96 object-cover object-center hover:scale-110  duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105 cursor-pointer"
                   />
                </div>
             </div>
